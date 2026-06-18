@@ -25,7 +25,6 @@ declare module 'sharp' {
   }
 
   function sharp(input?: string | Buffer): Sharp
-  export default sharp
 }
 
 import sharp from 'sharp'

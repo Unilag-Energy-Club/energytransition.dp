@@ -59,11 +59,11 @@ export async function POST(req: NextRequest) {
     pbFormData.append('name', name.trim())
     pbFormData.append(
       'photo',
-      new File([photoBuffer], `photo_${Date.now()}.jpg`, { type: 'image/jpeg' })
+      new File([new Uint8Array(photoBuffer)], `photo_${Date.now()}.jpg`, { type: 'image/jpeg' })
     )
     pbFormData.append(
       'generated_dp',
-      new File([composedBuffer], `dp_${Date.now()}.jpg`, { type: 'image/jpeg' })
+      new File([new Uint8Array(composedBuffer)], `dp_${Date.now()}.jpg`, { type: 'image/jpeg' })
     )
 
     const record = await pb.collection('dp_generations').create(pbFormData)
