@@ -73,6 +73,13 @@ export async function POST(req: NextRequest) {
 
   } catch (err: unknown) {
     console.error('[/api/generate] Error:', err)
+    
+    // Log environment variable status for debugging
+    console.error('[/api/generate] Env vars loaded:', {
+      pbUrl: !!process.env.NEXT_PUBLIC_POCKETBASE_URL,
+      adminEmail: !!process.env.POCKETBASE_ADMIN_EMAIL,
+      adminPassword: !!process.env.POCKETBASE_ADMIN_PASSWORD,
+    })
 
     const message =
       err instanceof Error ? err.message : 'Something went wrong.'
